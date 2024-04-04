@@ -25,12 +25,12 @@ const UpdatePrompt = () => {
 
     if (promptId) getPromptDetails();
   }, [promptId]);
-    
+
   const updatePrompt = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
-    if (!promptId) return alert("Prompt Id not found");
+    if (!promptId) return alert("Missing PromptId!");
 
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
@@ -50,7 +50,9 @@ const UpdatePrompt = () => {
       setSubmitting(false);
     }};
 
-  return <Form type="Edit" post={post} setPost={setPost} submitting={submitting} handleSubmit={updatePrompt} />;
+  return (
+    <Form type='Edit' post={post} setPost={setPost} submitting={submitting} handleSubmit={updatePrompt} />
+  );
 };
 
 export default UpdatePrompt;
